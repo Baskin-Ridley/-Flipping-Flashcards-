@@ -7,48 +7,43 @@ function FlashcardGallery() {
   let prevScrollPos = window.pageYOffset;
   const navContainer = document.querySelector(".nav-container");
 
-  if (navContainer) {
-    window.addEventListener("scroll", () => {
-      const currentScrollPos = window.pageYOffset;
+  window.addEventListener("scroll", () => {
+    const currentScrollPos = window.pageYOffset;
 
-      if (prevScrollPos > currentScrollPos) {
-        // User is scrolling up
-        if (currentScrollPos < 100) {
-          navContainer.style.display = "flex";
-        }
-      } else {
-        // User is scrolling down
-        if (currentScrollPos > 100) {
-          navContainer.style.display = "none";
-        }
+    if (prevScrollPos > currentScrollPos) {
+      // User is scrolling up
+      if (currentScrollPos < 100) {
+        navContainer.style.display = "flex";
       }
+    } else {
+      // User is scrolling down
+      if (currentScrollPos > 100) {
+        navContainer.style.display = "none";
+      }
+    }
 
-      prevScrollPos = currentScrollPos;
-    });
-  }
+    prevScrollPos = currentScrollPos;
+  });
 
   const [flashcards, setFlashcards] = useState([]);
   const [category, setCategory] = useState(false);
- 
-  
 
   async function loadFlashcards() {
     const response = await fetch("http://localhost:3000/api/flashcards");
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     setFlashcards(data);
   }
 
   useEffect(() => {
     loadFlashcards();
-  }, [deleteFlashcard]);
+  }, [flashcards]);
 
   function displayFlashcards(category) {
     if (category === "All") {
       return flashcards.map((f) => (
         <Flashcard
           key={f.id}
-          id={f.id}
           question={f.question}
           answer={f.answer}
           deleteFlashcard={deleteFlashcard}
@@ -63,7 +58,6 @@ function FlashcardGallery() {
           id={f.id}
           question={f.question}
           answer={f.answer}
-          deleteFlashcard={deleteFlashcard}
         />
       ));
   }
@@ -79,16 +73,16 @@ function FlashcardGallery() {
       options
     );
     await response.json();
-
-    setFlashcards(flashcards.filter((item) => item !== flashcards.id));
   }
 
-  return (
-    <>
-      <FlashcardFilter category={category} setCategory={setCategory} />
-      <div className="flashcard-container">{displayFlashcards(category)}</div>
-    </>
-  );
+  setFlashcards(flashcards.filter((item) => item !== flashcards.id));
 }
+
+return (
+  <>
+    <FlashcardFilter category={category} setCategory={setCategory} />
+    <div className="flashcard-container">{displayFlashcards(category)}</div>
+  </>
+);
 
 export default FlashcardGallery;
