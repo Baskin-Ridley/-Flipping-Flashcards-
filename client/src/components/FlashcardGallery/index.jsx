@@ -33,7 +33,6 @@ function FlashcardGallery() {
       "https://flipping-flashcards.onrender.com/api/flashcards"
     );
     const data = await response.json();
-    console.log(data);
     setFlashcards(data);
   }
 
@@ -75,8 +74,11 @@ function FlashcardGallery() {
       options
     );
     await response.json();
-    setFlashcards(flashcards.filter((item) => item !== flashcards.id));
-  }
+    
+    setFlashcards(flashcards.filter(item => item !== flashcards.id))
+    
+}
+
 
   return (
     <>
