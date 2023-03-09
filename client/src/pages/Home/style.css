@@ -11,6 +11,7 @@
       margin: 10px;
     }
   }
+  
 
 @media screen and (max-width: 600px) {
     .form {
@@ -28,4 +29,6 @@ h4 {
     padding: 25px;
     font-size: 30px;
 }
+
+
 
