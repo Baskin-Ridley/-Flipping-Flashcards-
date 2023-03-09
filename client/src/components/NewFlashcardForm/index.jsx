@@ -24,7 +24,7 @@ function NewFlashcardForm({
   function handleSubmit(e) {
     e.preventDefault();
     if (question.length > 0 && answer.length > 0) {
-      fetch("http://localhost:3000/api/flashcards", {
+      fetch("https://flipping-flashcards.onrender.com/api/flashcards", {
         method: "POST",
         body: JSON.stringify({
           question: question,

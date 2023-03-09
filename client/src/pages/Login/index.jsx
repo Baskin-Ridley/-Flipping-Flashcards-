@@ -30,7 +30,7 @@ const Login = () => {
     if (!isLogin) {
       console.log("Login");
       // send login info to server
-      fetch("http://localhost:3000/users/login", {
+      fetch("https://flipping-flashcards.onrender.com/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

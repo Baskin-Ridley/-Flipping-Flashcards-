@@ -29,7 +29,9 @@ function FlashcardGallery() {
   const [category, setCategory] = useState(false);
 
   async function loadFlashcards() {
-    const response = await fetch("http://localhost:3000/api/flashcards");
+    const response = await fetch(
+      "https://flipping-flashcards.onrender.com/api/flashcards"
+    );
     const data = await response.json();
     console.log(data);
     setFlashcards(data);
@@ -69,7 +71,7 @@ function FlashcardGallery() {
       headers: { "Content-Type": "application/json" },
     };
     const response = await fetch(
-      `http://localhost:3000/api/flashcards/${id}`,
+      `https://flipping-flashcards.onrender.com/api/flashcards/${id}`,
       options
     );
     await response.json();
