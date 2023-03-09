@@ -93,7 +93,7 @@ const Login = () => {
         {isLogin ? (
           <>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id='register-form'>
               <label htmlFor="userName">Username</label>
               <input
                 type="text"
@@ -118,10 +118,10 @@ const Login = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-              <button className="register-button" type="submit">
+              <button aria-label="register" className="register-button" type="submit">
                 Register
               </button>
-              <button className="toggle-button" onClick={() => toggleLogin()}>
+              <button aria-label="login" className="toggle-button" onClick={() => toggleLogin()}>
                 Go to Login
               </button>
             </form>
@@ -129,7 +129,7 @@ const Login = () => {
         ) : (
           <>
             <h1 className="login-title">Login</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id='login-form'>
               <label htmlFor="userName">Username</label>
               <input
                 type="text"

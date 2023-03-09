@@ -45,6 +45,7 @@ function FlashcardGallery() {
       return flashcards.map((f) => (
         <Flashcard
           key={f.id}
+          id={f.id}
           question={f.question}
           answer={f.answer}
           deleteFlashcard={deleteFlashcard}
@@ -59,6 +60,7 @@ function FlashcardGallery() {
           id={f.id}
           question={f.question}
           answer={f.answer}
+          deleteFlashcard={deleteFlashcard}
         />
       ));
   }
